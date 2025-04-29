@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         int[] nums = {3, 1, 5, 2, 1, 4};
         int[] numsBackup = Arrays.copyOf(nums, nums.length);
-        bubbleSort(nums);
+        selectionSort(nums);
 
         System.out.println(Arrays.toString(nums));
     }
@@ -24,6 +24,24 @@ public class Main {
                     nums[j + 1] = temp;
                 }
             }
+        }
+    }
+
+    /**
+     * sorts an array by finding the smallest value and bringing it towards the front of the array
+     * @param nums the input array
+     */
+    public static void selectionSort(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
+            int minIndex = i;
+            for (int j = i; j < nums.length; j++) {
+                if (nums[j] < nums[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            int temp = nums[minIndex];
+            nums[minIndex] = nums[i];
+            nums[i] = temp;
         }
     }
 }
